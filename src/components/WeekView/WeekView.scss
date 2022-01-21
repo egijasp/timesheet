@@ -1,0 +1,56 @@
+.container {
+  background: #FFFBFE;
+  padding: 10px 20px;
+  display: grid;
+  grid-template-columns: 350px;
+  gap: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 12px;
+}
+
+.input__wrapper {
+  border-radius: 4px;
+  border: 2px solid #6750A4;
+  width: 116px;
+  height: 56px;
+  display: grid;
+}
+
+.input__label {
+  font-size: 12px;
+  background: #FFFBFE;
+  color: #6750A4;
+  letter-spacing: 0.5px;
+  padding: 0 3px;
+  margin-left: 10px;
+}
+
+.hours {
+  font-size: 16px;
+  justify-self: center;
+  align-self: center;
+}
+
+.input {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  justify-self: center;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.salary {
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  justify-self: end;
+  align-self: center;
+}
