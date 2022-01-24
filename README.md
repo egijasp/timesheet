@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Timesheet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
+
+##Visit
+
+You cN try it out: https://timesheet-egija-sp.netlify.app/
+
+### Information about this project:
+
+- React TypeScript single page application
+
+[//]: # (<img src="./src/assets/images/mobile.PNG" alt="mobile" width="400px">)
+<img src="src/assets/images/image.png" alt="mobile" width="400px">
+
+The task is to implement the UI of simple timesheet entries for different employees and weeks. Users can select a timesheet filtered by an employee name and a week, and edit hours worked for selected employee and week.
+
+You are free to choose javascript or typescript, any libraries (vue, react, angular, etc) to build the single page application. Mobile-only website, no need to build a responsive website. No backend.
+
+Nice to haves:
+* strict TypeScript (if using TypeScript)
+* code conforms to lint rules
+
+---
+
+Expected functionality:
+
+* generate random timesheets with random employees
+* timesheets must be generated for the current week and previous 4 weeks
+* update "Hours worked" instantly
+* delay update of monetary values by 0.25-1sec by faking REST API call and display a progress indicator in the meantime. The assumption is the backend (REST API) calculates monetary values.
+* for all employees set random hourly rate the weekdays and double hourly rate for the weekend hours
+
+Example.
+
+The hourly rate is €10 and overtime €20, and the employee worked 8 hours on Monday and 4 hours on Sunday:
+hours worked is calculated as "12 = 8+4"
+salary is calculated as "160 = (8 * 10) + (4 * 20)"
+
+
 
 ## Available Scripts
 
-In the project directory, you can run:
+## Install
 
-### `npm start`
+    npm install
 
-Runs the app in the development mode.\
+
+## Running the project
+
+    npm run start
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
