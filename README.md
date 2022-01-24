@@ -4,7 +4,7 @@
 
 ##Visit
 
-You cN try it out: https://timesheet-egija-sp.netlify.app/
+You can try it out: https://timesheet-egija-sp.netlify.app/
 
 ### Information about this project:
 
