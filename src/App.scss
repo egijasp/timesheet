@@ -1,19 +1,33 @@
+.App {
+  display: grid;
+  grid-template-columns: minmax(350px,500px);
+  justify-content: center;
+  justify-self: center;
+}
+
 .App__header {
-  margin: 20px;
+  padding: 20px;
   display: grid;
   gap: 10px;
+  background-color: #EADDFF;
 }
 
 .App__footer {
   display: grid;
+  justify-content: center;
+  background-color: #EADDFF;
+}
+
+.footer__text {
+  display: grid;
   grid-template-columns: 100px 100px;
-  padding: 20px;
+  padding: 10px;
   gap: 10px;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
-}
 
-.footer__text {
-
+  &--right {
+    justify-self: right;
+  }
 }

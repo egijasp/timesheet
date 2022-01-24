@@ -1,12 +1,9 @@
-export type WorkedHours = {
-  day: string,
-  hours: number,
-}
-
 export type WeeksData = {
   week: string,
-  workedHours: WorkedHours[]
-}
+  workedHours: {
+    [key: string] : number,
+  },
+  }
 
 export type EmployeeData = {
   name: string,

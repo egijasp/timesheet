@@ -1,11 +1,8 @@
-.dropdown {
-}
-
 .dropdown__wrapper {
   border: 2px solid #6750A4;
   border-radius: 4px;
   height: 56px;
-  max-width: 350px;
+  max-width: 500px;
   width: 100%;
   background-color: transparent;
 }
@@ -16,6 +13,7 @@
   padding: 5px;
   margin-left: 10px;
   color: #6750A4;
+  font-weight: 500;
 }
 
 .dropdown__button {

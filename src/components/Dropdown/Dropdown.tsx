@@ -3,18 +3,17 @@ import {
 } from 'react';
 import './Dropdown.scss';
 import { MdPersonOutline, GoTriangleDown, GoTriangleUp } from 'react-icons/all';
-import { EmployeeData } from '../../helpers/types';
 
 type DropdownProps = {
   label: string,
-  value: string,
   data: string[];
-  onSelect: (value: string) => void,
-  placeholder: string,
+  changeHandler: (item: string) => void,
+  value: string,
+  title: string
 }
 
 const Dropdown: FC<DropdownProps> = ({
-  label, value, data, onSelect, placeholder,
+  label, data, changeHandler, value, title,
 }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLFieldSetElement>(null);
@@ -44,10 +43,9 @@ const Dropdown: FC<DropdownProps> = ({
           <div
             className="dropdown__button"
             onClick={() => setOpen(!open)}
-            placeholder={placeholder}
           >
             <MdPersonOutline className="dropdown__button--icon" />
-            {value}
+            {value || title}
             <span className="dropdown__button--angle">
               { open ? <GoTriangleUp /> : <GoTriangleDown /> }
             </span>
@@ -60,10 +58,9 @@ const Dropdown: FC<DropdownProps> = ({
                 key={Math.random()}
                 className="dropdown__list"
                 onClick={() => {
-                  setOpen(!open);
-                  onSelect(item);
+                  changeHandler(item);
+                  setOpen(false);
                 }}
-
               >
                 {item}
               </div>

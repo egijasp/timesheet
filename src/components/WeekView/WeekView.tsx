@@ -1,70 +1,57 @@
 import './WeekView.scss';
-import {
-  FC, useEffect, useRef, useState,
+import React, {
+  FC,
 } from 'react';
-import days from '../../data/days';
+import Loading from '../Loading/Loading';
 
 type WeekViewProps = {
-  hours?: number,
-  salary?: number,
+  onHoursChange: (value: number, day: string) => void;
   day: string,
+  hours: number,
+  salary: number,
+  loading: boolean,
 }
 
-const WeekView: FC<WeekViewProps> = ({ hours, salary, day }) => {
-  const [editHours, setEditHours] = useState(false);
-  const [inputValue, setInputValue] = useState<number>(0);
-  const hoursRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    hoursRef.current?.focus();
-  }, [editHours]);
-
-  return (
-    <div className="container">
+const WeekView: FC<WeekViewProps> = ({
+  onHoursChange, day, hours, salary, loading,
+}) => (
+  <div className="container">
+    <div className="input__list">
       <div
-        key={day}
-        className="wrapper"
+        className="input__wrapper"
       >
-        <fieldset
-          className="input__wrapper"
-          onBlur={() => setEditHours(false)}
-          onDoubleClick={() => setEditHours(true)}
+        <input
+          className="input"
+          type="number"
+          onChange={(e) => {
+            const value = Number(e.target.value);
+            if (value >= 0 && value <= 24) {
+              onHoursChange(value, day);
+            }
+          }}
+          value={hours}
+          placeholder="0"
+          id={day}
+        />
+        <label
+          htmlFor={day}
+          className="input__label"
         >
-          <legend
-            className="input__label"
-          >
-            {day}
-          </legend>
-          {editHours ? (
-            <input
-              className="input"
-              ref={hoursRef}
-              type="number"
-              value={inputValue}
-              onChange={(e) => {
-                const value = Number(e.target.value);
-                if (value >= 0 && value <= 24) {
-                  setInputValue(value);
-                }
-              }}
-            />
-          ) : (
-            <span
-              className="hours"
-              onClick={() => setEditHours(true)}
-            >
-              {hours}
-            </span>
-          )}
-        </fieldset>
-        <span className="salary">
-          €
-          {' '}
-          {salary?.toFixed(2)}
-        </span>
+          {day}
+        </label>
       </div>
+      {!loading
+        ? <Loading /> : (
+          <span
+            className="salary"
+          >
+            €
+            {' '}
+            {salary.toFixed(2)}
+          </span>
+        )}
     </div>
-  );
-};
+  </div>
+);
 
 export default WeekView;

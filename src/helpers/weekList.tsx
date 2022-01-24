@@ -1,9 +1,9 @@
 import moment from 'moment';
 import days from '../data/days';
-import { EmployeeData, WeeksData, WorkedHours } from './types';
+import { EmployeeData } from './types';
 import employeesList from '../data/employeesList';
 
-const weekList = () => {
+export const weekList = (): string[] => {
   const weeks = [];
   for (let i = 0; i < 5; i += 1) {
     const start = moment().subtract(i, 'weeks').startOf('isoWeek').format('DD MMM YYYY');
@@ -13,23 +13,31 @@ const weekList = () => {
   return weeks;
 };
 
-export const employeeData = () => {
-  const randomIndex = () => Math.round(Math.random() * employeesList.length);
-  const randomHours = (): WorkedHours[] => days.map((item) => ({
-    day: item,
-    hours: Math.round(Math.random() * (8 - 0 + 1) + 0),
-  }));
-  const weeksData = (): WeeksData[] => weekList().map((item) => ({
-    week: item,
-    workedHours: randomHours(),
-  }));
+export const generateEmployeeData = (): EmployeeData[] => {
+  const employeesData = [];
 
-  const employeeArray = new Array(employeesList.length).fill({});
+  for (let x = 0; x < employeesList.length; x += 1) {
+    const weeksData = [];
 
-  return employeeArray.map(() => ({
-    name: `${employeesList[randomIndex()]}`,
-    weeks: weeksData(),
-  }));
+    for (let y = 0; y < weekList().length; y += 1) {
+      const daysAndHours = {};
+
+      days.forEach((day) => {
+        Object.assign(daysAndHours, { [day]: Math.round(Math.random() * (8 - 0 + 1) + 0) });
+      });
+
+      weeksData.push({
+        week: weekList()[y],
+        workedHours: daysAndHours,
+      });
+    }
+
+    employeesData.push(
+      {
+        name: employeesList[x],
+        weeks: weeksData,
+      },
+    );
+  }
+  return employeesData;
 };
-
-export default weekList();
