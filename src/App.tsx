@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Dropdown from './components/Dropdown/Dropdown';
 import WeekView from './components/WeekView/WeekView';
@@ -8,7 +8,6 @@ import {
 import { EmployeeData, WeeksData } from './helpers/types';
 import employeesList from './data/employeesList';
 import days from './data/days';
-import Loading from './components/Loading/Loading';
 
 const hourlyRate = 10;
 const weeks = weekList();
@@ -17,18 +16,6 @@ const App = () => {
   const [employeesData, setEmployeesData] = useState<EmployeeData[]>(generateEmployeeData);
   const [selectedEmployee, setSelectedEmployee] = useState<EmployeeData>(employeesData[0]);
   const [selectedWeek, setSelectedWeek] = useState(weeks[0]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(true);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeout);
-      setLoading(false);
-    };
-  }, [selectedWeek, selectedEmployee]);
 
   const updateEmployee = (name: string) => {
     setSelectedEmployee({
@@ -108,13 +95,11 @@ const App = () => {
           <span className="">Hours worked</span>
           <span className="footer__text--right">{employeeHoursTotal()}</span>
           <span className="">Salary</span>
-          {!loading ? <Loading /> : (
-            <span className="footer__text--right">
-              €
-              {' '}
-              {employeeSalaryTotal()}
-            </span>
-          )}
+          <span className="footer__text--right">
+            €
+            {' '}
+            {employeeSalaryTotal()}
+          </span>
         </div>
       </footer>
     </div>
