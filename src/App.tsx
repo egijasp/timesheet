@@ -96,7 +96,8 @@ const App = () => {
         <WeekView
           key={day}
           day={day}
-          loading={loading}
+          employee={selectedEmployee}
+          week={selectedWeek}
           onHoursChange={hoursChange}
           hours={workedHoursDay(day)}
           salary={employeeSalaryDay(day, index)}
