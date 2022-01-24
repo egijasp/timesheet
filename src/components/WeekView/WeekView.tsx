@@ -3,7 +3,7 @@ import React, {
   FC, useEffect, useState,
 } from 'react';
 import Loading from '../Loading/Loading';
-import { EmployeeData, WeeksData } from '../../helpers/types';
+import { EmployeeData } from '../../helpers/types';
 
 type WeekViewProps = {
   onHoursChange: (value: number, day: string) => void;
@@ -12,7 +12,6 @@ type WeekViewProps = {
   salary: number,
   employee: EmployeeData,
   week: string,
-  // loading: boolean,
 }
 
 const WeekView: FC<WeekViewProps> = ({
@@ -29,6 +28,7 @@ const WeekView: FC<WeekViewProps> = ({
       clearTimeout(timeout);
     };
   }, [hours, salary, employee, week]);
+
   return (
     <div className="container">
       <div className="input__list">
